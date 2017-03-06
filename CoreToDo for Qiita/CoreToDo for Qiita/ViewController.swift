@@ -21,6 +21,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // MARK: - Properties
 
     @IBOutlet weak var taskTableView: UITableView!
+    let estimatedRowHeight: CGFloat = 40.0
     
     // MARK: -
     
@@ -46,6 +47,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         taskTableView.dataSource = self
         taskTableView.delegate = self
+        taskTableView.estimatedRowHeight = estimatedRowHeight
+        taskTableView.rowHeight = UITableViewAutomaticDimension
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -151,7 +154,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40.0
+        return estimatedRowHeight
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
